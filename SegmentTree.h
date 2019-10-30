@@ -35,12 +35,15 @@ class SegmentTree
         T valueForExtraNodes;
     
         //specifies how to combine child node results to form parent node result.
+        //Merging two nodes
         T (*combine)(T obj1, T obj2);
     
         //used to calculate the size of array needed to store the tree.
+        // We want to find the smallest power of 2 which is greater than or equal to current number.
         int calculateSize(int n);
     
         //helps to solve a range query.
+        // L R is range of query , St and Ed is staring and ending index represented by this node
         T queryHelper(int l,int r, int st, int ed, int node);
 };
 
@@ -66,7 +69,6 @@ template<class T> SegmentTree<T>::SegmentTree(T ar[], int n,
 
    buildTree(data);
 }
-
 
 template<class T> int SegmentTree<T>::calculateSize(int n)
 {
